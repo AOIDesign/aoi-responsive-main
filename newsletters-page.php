@@ -3,6 +3,10 @@
  * Template Name: Newsletters
  *
  * The template for displaying Newslwetters Main Page. You must also go to single.php and delete the code for the blog post share toolbar and retweet social media stuff
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package AOI_Responsive
  */
 if (have_posts()) { get_header(); ?>
 <div id="main">

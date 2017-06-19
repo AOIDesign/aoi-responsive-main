@@ -2,13 +2,14 @@
 /**
  * The Sidebar containing the secondary (right) widget areas.
  *
- * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package AOI_Responsive
  */
 ?>
 
-		
+
 
 <?php
 	// A second sidebar for widgets, just because.

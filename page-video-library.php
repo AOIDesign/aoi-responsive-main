@@ -4,14 +4,10 @@
  *
  * A custom page template for video library pages.
  *
- * The "Template Name:" bit above allows this to be selectable
- * from a dropdown menu on the edit page screen.
+ * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ * @package AOI_Responsive
  */
-
  get_header(); ?>
 <div id="main">
  	<div class="container">

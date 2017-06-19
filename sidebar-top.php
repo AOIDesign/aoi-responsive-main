@@ -2,9 +2,10 @@
 /**
  * The Top widget areas.
  *
- * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package AOI_Responsive
  */
 ?>
 
@@ -33,7 +34,7 @@
                     </div>
     				</div>
 <?php endif; ?>
-				
+
 <?php if ( is_active_sidebar( 'center-top-widget-area' ) ) : ?>
 				<div id="top-center" class="widget-area">
                 <div class="container">
@@ -54,4 +55,3 @@
 				</div><!-- #top-right .widget-area -->
 <?php endif; ?>
 			</div><!-- #top-widget-area -->
-

@@ -15,8 +15,9 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
-<script src="https://use.fontawesome.com/e92e84fcd5.js"></script>
-<?php wp_head(); ?>
+<script src="https://use.fontawesome.com/49824ff6c5.js"></script>
+<?php wp_head(); ?>
+
 <script type="text/javascript">
 jQuery(document).ready(function($){
 
@@ -69,8 +70,6 @@ if ($og_video_thumb !== '') { ?>
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'aoi-responsive-main' ); ?></a>
-
 	<header id="masthead" class="site-header" role="banner">
 		<div class="container">
 	    <div class="row">
@@ -100,5 +99,5 @@ if ($og_video_thumb !== '') { ?>
 	</div>
 </div>
 	</header><!-- #masthead -->
-	<div class="container">
+
 		<div id="content" class="site-content">

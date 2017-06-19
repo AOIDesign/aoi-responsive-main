@@ -1,64 +1,109 @@
 <?php
 /**
- * The template for displaying 404 pages (not found)
+ * The template for displaying 404 pages (Not Found).
  *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package AOI_Responsive
+ * @package WordPress
+ * @subpackage Twenty_Ten
+ * @since Twenty Ten 1.0
  */
 
-get_header(); ?>
+ get_header(); ?>
+<div id="main">
+ 	<div class="container one-column">
+        <div class="row">
+        	<div class="col-sm-12" id="mobile-top">
+            </div>
+        </div>
+    	<div class="row">
+			<div class="col-sm-12" id="content" role="main">
+                <h1>404 error. This page may have moved or is no longer available.</h1>
+                <div class="error-404-message">
+                    Please check the web address you entered or use the search below to find what you were looking for.
+                    <div id="search-content">
+                        <form role="search" method="get" class="search-form" action="/">
+                            <input type="submit" class="search-submit" value="Search">
+                            <label>
+                                <span class="screen-reader-text">Search for:</span>
+                                <input type="search" class="search-field" placeholder="Search for..." value="" name="s" title="Search for:">
+                            </label>
+                        </form>
+                    </div><!-- #search-content -->
+                </div><!-- .404-message -->
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+                <div class="related-posts">
+                    <h2>Or were you looking for one of these pages?</h2>
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'aoi-responsive-main' ); ?></h1>
-				</header><!-- .page-header -->
+                    <?php /* Transforming the URI into search terms */
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'aoi-responsive-main' ); ?></p>
+                    $search_term = substr($_SERVER['REQUEST_URI'],1);
 
-					<?php
-						get_search_form();
+                    $search_term = urldecode(stripslashes($search_term));
 
-						the_widget( 'WP_Widget_Recent_Posts' );
+                    $find = array ("'.html'", "'[-/_]'") ;
 
-						// Only show the widget if site has multiple categories.
-						if ( aoi_responsive_categorized_blog() ) :
-					?>
+                    /* If you only want the last term of the URI, use the fol­low­ing instead:
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'aoi-responsive-main' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div><!-- .widget -->
+                    $find = array (“’.html’”, “‘.+/’”, “‘[-/_]’”) ;  */
 
-					<?php
-						endif;
+                    $replace = " " ;
 
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'aoi-responsive-main' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
+                    $search_term = trim(preg_replace ( $find , $replace , $search_term ));
 
-						the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
+                    $search_term_q = preg_replace('/ /', '%20', $search_term);
 
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
+                    ?>
+                    <?php
+                    // Set a custom length for excerpts
+                    function get_the_widget_excerpt_404(){
+                    $title = get_the_title();
+                    $permalink = get_permalink($post->ID);
+                    $excerpt = get_the_content();
+                    $excerpt = preg_replace(" (\[.*?\])",'',$excerpt);
+                    $excerpt = strip_shortcodes($excerpt);
+                    $excerpt = strip_tags($excerpt);
+                    $excerpt = substr($excerpt, 0, 150);
+                    $excerpt = substr($excerpt, 0, strripos($excerpt, " "));
+                    $excerpt = trim(preg_replace( '/\s+/', ' ', $excerpt));
+                    $excerpt = '<span class="blog-excerpt">'.$excerpt.'</span> ... <div class="button-container"><a title="Link to read '.$title.'" class="read-more" href="'.$permalink.'">Read More</a></div>';
+                    return $excerpt;
+                    }
+                    ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+                    <?php /* Use the search terms to run a query */
 
-<?php
-get_footer();
+                    query_posts('s='. $search_term_q );
+
+                    /* check to see if there are posts */
+
+                    if ( have_posts() ) :
+
+                    ?>
+
+                    <?php /* start the loop */  while ( have_posts() ) : the_post(); ?>
+
+                    <div><a class="related-title" href="<?php the_permalink() ?>"><?php the_title() ?></a>
+
+                    <?php echo get_the_widget_excerpt_404(); ?>
+
+
+                    </div>
+
+                    <?php /* end the loop */  endwhile; ?>
+
+                    <?php else: echo 'Sorry, no related pages were found.';  endif; ?>
+
+                </div><!-- .related-posts -->
+
+            </div><!-- #content -->
+
+            <div class="col-sm-12" id="mobile-middle">
+            </div><!-- #mobile-middle -->
+
+        </div><!-- .row -->
+        <div class="row">
+        	<div class="col-sm-12" id="mobile-bottom">
+            </div>
+        </div>
+	</div><!-- .container -->
+</div><!-- #main -->
+<?php get_footer(); ?>

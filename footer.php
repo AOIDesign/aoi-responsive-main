@@ -134,21 +134,7 @@
 
 	</div><!-- .container -->
 </div><!-- #footer -->
-<!-- Modal  If using model popup- change out gravity form id-->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog" role="document">
-	<div class="modal-content">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h4 class="modal-title text-center" id="myModalLabel">Let Us Review Your Case</h4>
-		</div>
-		<div class="modal-body">
-			<?php echo do_shortcode('[gravityform id=5 title=false description=false ajax=true tabindex=49]'); ?>
-		</div>
 
-	</div>
-</div>
-</div>
 <?php if(is_page("thank-you")) { ?>
 <!-- Google Code for Thank You Conversion Page -->
 <?php } ?>

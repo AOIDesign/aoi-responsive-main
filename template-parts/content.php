@@ -20,7 +20,7 @@
 
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php aoi_responsive_posted_on(); ?>
+			<?php aoi_responsive_posted_on(); ?> 
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>

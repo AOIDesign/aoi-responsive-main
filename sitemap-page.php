@@ -1,5 +1,14 @@
 <?php
-	# -- Template Name: Sitemap
+		/**
+	 * Template Name: Sitemap
+	 *
+	 * A custom page template for Full width no side bar pages.
+	 *
+	 * @link https://codex.wordpress.org/Template_Hierarchy
+	 *
+	 * @package AOI_Responsive
+	 */
+
 	get_header();
 ?>
 <div id="main">
@@ -22,11 +31,11 @@
 		wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number'));
 	?>
 	<ul>
-	<?php aoi_sitemap('exclude=19,21'); # if newsletter exclude newsletters and everything after. if not then exclude sitemap & thank you  ?>
+	<?php aoi_sitemap(''); # if newsletter exclude newsletters and everything after. if not then exclude sitemap & thank you  ?>
 					<!--<li><a title="Link to Newsletters" href="/newsletters">Newsletters</a>
 						<ul>
 						<?php /* $postslist = get_posts('numberposts=-1&cat=3'); # change cat # to whatever category id wp assigned
-						foreach ($postslist as $post) : 
+						foreach ($postslist as $post) :
 						setup_postdata($post); ?>
 							<li><a title="Link to <?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 						<?php endforeach; ?>
@@ -35,13 +44,13 @@
                     <li><a title="Link to BLOG" href="/blog">BLOG</a>
 						<ul>
 						<?php  $postslist = get_posts('numberposts=-1&cat=-3'); # change cat # to whatever category id wp assigned
-						foreach ($postslist as $post) : 
+						foreach ($postslist as $post) :
 						setup_postdata($post); ?>
 							<li><a title="Link to <?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 						<?php endforeach; */ ?>
 						</ul>
 					</li>-->
-       <?php # aoi_sitemap('include='); # include everything after the newsletters except sitemap and thankyou  ?>                      
+       <?php # aoi_sitemap('include='); # include everything after the newsletters except sitemap and thankyou  ?>
 	</ul>
   </div>
 </div>
