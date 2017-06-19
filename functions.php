@@ -215,7 +215,7 @@ function aoi_sitemap_children($parent, $sort = 'menu_order'){
 	 )
 	 );
 	}
-// is_tree support 
+// is_tree support
 
 	function is_tree($pid) {
     global $post;
@@ -228,6 +228,48 @@ function aoi_sitemap_children($parent, $sort = 'menu_order'){
             return true;
     return false;
 }
+
+function body_begin() {
+do_action('after_body_open_tag');
+}
+
+function custom_content_after_body_open_tag() {
+
+    ?>
+
+		<div class="hidden">
+  	<span class="vcard p-author author author_name"><span class="fn"><?php the_author(); ?></span></span>
+  	<span class="post-date updated"><?php the_date(); ?></span>
+  	</div>
+
+    <?php
+
+}
+
+/**
+ * Filter the "read more" excerpt string link to the post.
+ *
+ * @param string $more "Read more" excerpt string.
+ * @return string (Maybe) modified "read more" excerpt string.
+ */
+function wpdocs_excerpt_more( $more ) {
+    return sprintf( '...<br /><br /><a class="read-more" href="%1$s">%2$s</a>',
+        get_permalink( get_the_ID() ),
+        __( 'Read More', 'textdomain' )
+    );
+}
+add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+
+/**
+ * Filter the except length to 20 words.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function wpdocs_custom_excerpt_length( $length ) {
+    return 100;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 /**
  * Implement the Custom Header feature.
