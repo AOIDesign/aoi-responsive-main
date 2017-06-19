@@ -22,12 +22,17 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 @import url("plugins/gravityforms/css/formsmain.css");
 @import url("plugins/gravityforms/css/formsmain.min.css");
 
+.inactiveLink {
+   pointer-events: none;
+   cursor: default;
+}
 
 /* Text meant only for screen readers */
 .screen-reader-text {
 	position: absolute;
 	left: -9000px;
 }
+
 
 html{font-family: 'Roboto', sans-serif !important;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
 body{margin:0; font-family: 'Roboto', sans-serif !important;}
@@ -287,7 +292,36 @@ button:focus {
 .single .entry-header{
 	display: block;
 }
+.comment-form-comment label {
+    display: block;
+
+}
 .navbar-default {
     background-color: transparent !important;
     border-color: transparent !important;
 }
+#megaMenu ul.megaMenu li.menu-item.ss-nav-menu-reg li.menu-item.megaReg-with-sub > a:after, #megaMenu ul.megaMenu li.menu-item.mega-with-sub > a:after, #megaMenu ul.megaMenu li.menu-item.ss-nav-menu-mega > a:after, #megaMenu ul.megaMenu li.menu-item.ss-nav-menu-reg li.menu-item.megaReg-with-sub > span.um-anchoremulator:after{
+	display: none !important;
+}
+.alignleft{float: left;margin: 0 15px 5px 0;}
+.alignright{float: right;margin: 0 0 5px 15px;}
+.aligncenter{display: block;margin: 0 auto;}
+.collapsing {
+    position: relative;
+    height: auto !important;
+
+}
+#breadcrumbs{margin-top: 15px}
+.single .entry-header{
+	display: block;
+}
+.error404 #content {
+    padding: 25px 15px;
+}
+.comment-form-comment label {
+    display: block;
+
+}
+.social a:hover{
+    text-decoration: none;
+  }
