@@ -27,6 +27,7 @@ function aoi_responsive_customize_register( $wp_customize ) {
 	    'section'  => 'themeslug_logo_section',
 	    'settings' => 'themeslug_logo',
 	) ) );
+	
 }
 add_action( 'customize_register', 'aoi_responsive_customize_register' );
 
