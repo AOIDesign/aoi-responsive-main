@@ -237,14 +237,16 @@ function custom_content_after_body_open_tag() {
 
     ?>
 
-		<div class="hidden">
+		<div class="hidden meta">
   	<span class="vcard p-author author author_name"><span class="fn"><?php the_author(); ?></span></span>
-  	<span class="post-date updated"><?php the_date(); ?></span>
+  	<span class="date updated published post_date "><?php the_date(); ?></span>
   	</div>
 
     <?php
 
 }
+
+add_action('after_body_open_tag', 'custom_content_after_body_open_tag');
 
 /**
  * Filter the "read more" excerpt string link to the post.
