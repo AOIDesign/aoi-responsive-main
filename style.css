@@ -188,6 +188,19 @@ a:active{outline:0;}
 .main-navigation .current-menu-ancestor > a{}
 .menu-toggle,
 .main-navigation.toggled ul{display:block;}
+
+.affix {
+    top: 0;
+    width: 100%;
+    z-index: 111111;
+    height: 50px;
+    margin-top: 0;
+}
+
+.affix + .container {
+  padding-top: 0px;
+}
+
 @media screen and (min-width:37.5em){.menu-toggle{display:none;}
 .main-navigation ul{display:block;}
 }
